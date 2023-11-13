@@ -4,7 +4,7 @@
 
 增加替换代码中的资源文件引用地址为 CDN 地址，使用 `cdnUrl` 参数设置 CDN 的域名会自动替换资源路径
 
-自动匹配 dist/assets 目录下匹配的文件后缀`['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp', 'ico', 'bmp', 'webm', 'avi', 'mp4', 'mp3', 'flv', 'mov']`，可自定义其他后缀
+自动匹配 dist/assets 目录下匹配的文件后缀`['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp', 'ico', 'bmp', 'webm', 'avi', 'mp4', 'mp3', 'flv', 'mov']`，可使用`fileSuffix`参数自定义其他后缀
 
 # Install 安装
 
