@@ -9,7 +9,7 @@
 # Install 安装
 
 ```
-npm i vite-plugin-oss-plus -D
+npm i vite-plugin-oss-pro -D
 ```
 
 # Options 配置参数
@@ -39,11 +39,11 @@ npm i vite-plugin-oss-plus -D
 ```javascript
 // vite.config.js
 import { defineConfig } from 'vite'
-import ViteOSSPluginPlus from 'vite-plugin-oss-plus'
+import ViteOSSPluginPro from 'vite-plugin-oss-pro'
 
 export default defineConfig({
   plugins: [
-    ViteOSSPluginPlus({
+    ViteOSSPluginPro({
       from: './dist/**', // 上传那个文件或文件夹
       dist: "/test",  // 需要上传到oss上的给定文件目录
       region: 'oss-xx-xx-1',
