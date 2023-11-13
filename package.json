@@ -1,0 +1,40 @@
+{
+  "name": "vite-plugin-oss-plus",
+  "version": "1.0.0",
+  "description": "一个可以将打包好的资源文件上传到阿里云OSS并且修改代码中资源文件CND地址的Vite插件",
+  "author": "qiu <727091090@qq.com>",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qiuwenxing/vite-plugin-oss-plus.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --newLine lf -d"
+  },
+  "keywords": [
+    "vite",
+    "plugin",
+    "oss"
+  ],
+  "engines": {
+    "node": ">=14"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/ali-oss": "^6.16.2",
+    "@types/glob": "^7.2.0",
+    "@types/node": "^16.11.7",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "typescript": "^4.4.4",
+    "vite-plugin-inspect": "^0.3.10"
+  },
+  "dependencies": {
+    "ali-oss": "^6.16.0",
+    "colors": "^1.4.0",
+    "glob": "^7.2.0",
+    "vite": "^2.6.14"
+  }
+}
