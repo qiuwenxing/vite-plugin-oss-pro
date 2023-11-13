@@ -1,10 +1,12 @@
-# vite-plugin-oss-plus
+# vite-plugin-oss-pro
 
 基于[vite-plugin-oss](https://github.com/jaelam0214/vite-plugin-oss)升级而来
 
 增加替换代码中的资源文件引用地址为 CDN 地址，使用 `cdnUrl` 参数设置 CDN 的域名会自动替换资源路径
 
 自动匹配 dist/assets 目录下匹配的文件后缀`['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp', 'ico', 'bmp', 'webm', 'avi', 'mp4', 'mp3', 'flv', 'mov']`，可使用`fileSuffix`参数自定义其他后缀
+
+解决了vite-plugin-oss的from参数使用./dist/**打包报错问题
 
 # Install 安装
 
