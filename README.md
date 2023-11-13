@@ -43,11 +43,14 @@ npm i vite-plugin-oss-pro -D
 import { defineConfig } from 'vite'
 import ViteOSSPluginPro from 'vite-plugin-oss-pro'
 
+const prod = process.env.NODE_ENV === 'production'
+
 export default defineConfig({
   plugins: [
-    ViteOSSPluginPro({
-      from: './dist/**', // 上传那个文件或文件夹
-      dist: "/test",  // 需要上传到oss上的给定文件目录
+    // 打包时才加载插件
+    prod && ViteOSSPluginPro({
+      from: './dist/assets/**', // 上传那个文件或文件夹
+      dist: "/static",  // 需要上传到oss上的给定文件目录
       region: 'oss-xx-xx-1',
       accessKeyId: 'xxxxxxxxxxxx',
       accessKeySecret: 'xxxxxxxxxxxx',
