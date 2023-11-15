@@ -8,14 +8,13 @@ export default {
     Inspect(),
     prod &&
       ViteOSSPluginPro({
-        from: "./dist/assets/**", // 上传那个文件或文件夹  可以是字符串或数组
+        cdnHost: "https://cdn.xxx.com",
+        from: "./dist/assets/**", // 上传那个文件或文件夹
         dist: "/static", // 需要上传到oss上的给定文件目录
-        region: "xxxx",
-        accessKeyId: "xxxx",
-        accessKeySecret: "xxxxxxx",
-        bucket: "xxxxx",
-        test: true,
-        cdnUrl: "https://cdn.xxx.com",
+        region: "oss-xx-xx-1",
+        accessKeyId: "xxxxxxxxxxxx",
+        accessKeySecret: "xxxxxxxxxxxx",
+        bucket: "xxxxxxxxx",
       }),
-  ],
+  ].filter(Boolean),
 };

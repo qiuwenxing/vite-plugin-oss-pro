@@ -19,7 +19,7 @@ export type OSSOptions = {
 
 export type OptionalOptions = {
   /**
-   * 上传哪些文件，支持类似gulp.src的glob方法，如'./build/**', 为glob字符串
+   * 上传哪些文件，支持类似gulp.src的glob方法，如'./build/**', 为glob字符串。默认./dist/assets/**
    */
   from: string
   /**
@@ -75,13 +75,21 @@ export type OptionalOptions = {
    */
   setVersion?: (data: { version: string }) => void
   /**
-   * 上传后要替换的资源文件CDN域名URL
+   * 上传后要替换的资源文件CDN域名
    */
-  cdnUrl?: string
+  cdnHost?: string
   /**
    * 需要上传的文件后缀，默认['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp', 'ico', 'bmp', 'webm', 'avi', 'mp4', 'mp3', 'flv', 'mov']
    */
   fileSuffix?: string[]
+  /**
+   * 要上传的资源文件目录，默认assets
+   */
+  assetsDirectory: string
+  /**
+   * 项目打包后的目录，默认dist
+   */
+  outputDirectory: string
 }
 
 export type PluginOptions = OSSOptions & OptionalOptions
@@ -91,10 +99,18 @@ export const defaultOption = {
   test: false,
   verbose: true,
   dist: '',
+  from: './dist/assets/**',
   buildRoot: '.',
   deleteOrigin: false,
   deleteEmptyDir: false,
-  timeout: 60 * 1000,
+  timeout: 30 * 1000,
   overwrite: true,
   quitWpOnError: false,
+  assetsDirectory: 'assets',
+  outputDirectory: 'dist',
+  setOssPath: (filePath) => {
+    let index = filePath.lastIndexOf("dist");
+    let Path = filePath.substring(index + 4, filePath.length);
+    return Path.replace(/\\/g, "/");
+  },
 } as OptionalOptions

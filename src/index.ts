@@ -12,6 +12,7 @@ import fs from 'fs'
  */
 const fileSuffix = ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp', 'ico', 'bmp', 'webm', 'avi', 'mp4', 'mp3', 'flv', 'mov']
 
+
 const assetUploaderPlugin = (options: PluginOptions): Plugin => {
   const oss = new OSS({
     region: options.region,
@@ -30,7 +31,9 @@ const assetUploaderPlugin = (options: PluginOptions): Plugin => {
     test,
     overwrite,
     version,
-    setVersion
+    setVersion,
+    assetsDirectory,
+    outputDirectory
   } = Object.assign(defaultOption, options)
   /**
    * 上传文件
@@ -182,21 +185,20 @@ const assetUploaderPlugin = (options: PluginOptions): Plugin => {
   }
   let outputPath = ''
   return {
-    name: 'vite-plugin-oss',
+    name: 'vite-plugin-oss-pro',
     // 在解析 Vite 配置后调用。使用这个钩子读取和存储最终解析的配置。当插件需要根据运行的命令做一些不同的事情时，它也很有用。
     configResolved: async (config) => {
       // 获取需要上传的文件目录路径
       outputPath = path.resolve(slash(config.build.outDir))
     },
     writeBundle: async () => {
-      if (options.cdnUrl) {
+      if (options.cdnHost) {
         const suffix = options.fileSuffix || fileSuffix
-        const url = new URL(options.dist || '', options.cdnUrl)
+        const url = new URL(options.dist || '', options.cdnHost)
         const cdnBaseUrl = url.href
-        // console.log(green('cdnUrl:' + cdnBaseUrl))
-        const regExp = new RegExp(`(\/assets\/.*?\.(${suffix.join('|')}))`, 'ig')
+        const regExp = new RegExp(`(\/${assetsDirectory}\/[A-Za-z0-9_.-]+\.(${suffix.join('|')}))`, 'ig')
         // 获取构建后的文件列表
-        const fileList = await glob.sync('./dist/**/*.{js,css,html}')
+        const fileList = await glob.sync(`./${outputDirectory}/**/*.{js,css,html}`)
         // 遍历文件列表
         fileList.forEach((filePath) => {
           // 读取文件内容

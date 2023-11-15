@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-oss-pro",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "一个可以将打包好的资源文件上传到阿里云OSS并且修改代码中资源文件CND地址的Vite插件",
   "author": "qiu <727091090@qq.com>",
   "main": "./dist/index.js",
@@ -10,13 +10,18 @@
     "url": "https://github.com/qiuwenxing/vite-plugin-oss-pro.git"
   },
   "scripts": {
-    "dev": "vite",
     "build": "tsc --newLine lf -d"
   },
   "keywords": [
     "vite",
+    "aliyun-oss",
+    "aliyun",
+    "oss",
     "plugin",
-    "oss"
+    "assets"
+  ],
+  "files": [
+    "dist"
   ],
   "engines": {
     "node": ">=14"
